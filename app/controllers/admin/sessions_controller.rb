@@ -1,7 +1,16 @@
 # frozen_string_literal: true
+# TODO(admin及びpublicにおいてview(session/registration)が作成できてない？)
 
 class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+
+  def after_sign_in_path_for(resource)
+    admin_orders_path
+  end
+
+  def aftere_sign_out_path_for(resource)
+    admin_session_path
+  end
 
   # GET /resource/sign_in
   # def new
