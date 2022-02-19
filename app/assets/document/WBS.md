@@ -3,9 +3,9 @@
 | task                                                               | start      | finish     |         | progress                                              |
 |                                                                    |            |            |         |                                                       |
 | **設計書作成**                                                     | 2022/02/19 | 2022/02/19 | -       | ![progress](https://progress-bar.dev/100/ "progress")  |
-| **開発準備**                                                       | 2022/02/19 | 2022/02/19 | -       | ![progress](https://progress-bar.dev/50/ "progress")  |
+| **開発準備**                                                       | 2022/02/19 | 2022/02/19 | -       | ![progress](https://progress-bar.dev/100/ "progress")  |
 | &nbsp; &nbsp; リポジトリ準備                                       | 2022/02/19 | 2022/02/19 | 0.5     | ![progress](https://progress-bar.dev/100/ "progress") |
-| &nbsp; &nbsp; データベース作成                                     | 2022/02/19 | 2022/02/19 | 0.5     | ![progress](https://progress-bar.dev/0/ "progress")   |
+| &nbsp; &nbsp; データベース作成                                     | 2022/02/19 | 2022/02/19 | 0.5     | ![progress](https://progress-bar.dev/100/ "progress")   |
 | **実装・単体テスト**                                               | 2022/02/19 | 2022/02/28 | -       | ![progress](https://progress-bar.dev/0/ "progress")   |
 | &nbsp; &nbsp; 管理者                                               | 2022/02/19 | 2022/02/24 | -       | ![progress](https://progress-bar.dev/0/ "progress")   |
 | &nbsp; &nbsp; &nbsp; &nbsp; ログイン画面                           | 2022/02/19 | 2022/02/19 | 1       | ![progress](https://progress-bar.dev/0/ "progress")   |
