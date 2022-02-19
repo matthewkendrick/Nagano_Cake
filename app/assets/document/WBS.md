@@ -2,7 +2,7 @@
 | :----------------------------------------------------------------- | :--------- | :--------- | :------ | :---------------------------------------------------- |
 | task                                                               | start      | finish     |         | progress                                              |
 |                                                                    |            |            |         |                                                       |
-| **設計書作成**                                                     | 2022/02/19 | 2022/02/19 | -       | ![progress](https://progress-bar.dev/80/ "progress")  |
+| **設計書作成**                                                     | 2022/02/19 | 2022/02/19 | -       | ![progress](https://progress-bar.dev/100/ "progress")  |
 | **開発準備**                                                       | 2022/02/19 | 2022/02/19 | -       | ![progress](https://progress-bar.dev/50/ "progress")  |
 | &nbsp; &nbsp; リポジトリ準備                                       | 2022/02/19 | 2022/02/19 | 0.5     | ![progress](https://progress-bar.dev/100/ "progress") |
 | &nbsp; &nbsp; データベース作成                                     | 2022/02/19 | 2022/02/19 | 0.5     | ![progress](https://progress-bar.dev/0/ "progress")   |
