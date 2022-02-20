@@ -9,7 +9,7 @@ class Admin::SessionsController < Devise::SessionsController
   end
 
   def aftere_sign_out_path_for(resource)
-    admin_session_path
+    new_admin_session_path
   end
 
   # GET /resource/sign_in
