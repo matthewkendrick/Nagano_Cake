@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :admin, skip: [:regidtration, :passwords], controllers: {
-    sessions:      'admin/sessions'
+    sessions:      'admin/sessions',
     registrations: 'admin/registrations'
   }
 
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     registrations:  'public/registrations'
   }
 
-  root to:      => 'public/homes#top' 
+  root to: 'public/homes#top' 
   get '/about'  => 'public/homes#about'
   get '/admin'  => 'admin/homes#top'
 
