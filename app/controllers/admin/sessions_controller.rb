@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-# TODO(admin及びpublicにおいてview(session/registration)が作成できてない？)
 
 class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]

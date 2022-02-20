@@ -1,16 +1,25 @@
 Rails.application.routes.draw do
 
-  devise_for :admin, controllers: {
-    sessions:       'admin/sessions',
-    passwords:      'admin/passwords',
-    registrations:  'admin/registrations'
+  devise_for :admin, skip: [:regidtration, :passwords], controllers: {
+    sessions: 'admin/sessions'
   }
 
-  devise_for :customers, controllers: {
+  namespace :admin do
+    root to: 'homes#top'
+    resources :products,      expect: [:destroy]
+    resources :genres,        only:   [:index, :edit, :create, :update]
+    resources :customers,     only:   [:index, :show, :edit,   :update]
+    resources :orders,        only:   [:index, :show, :update]
+    resources :order_details, only:   [:update]
+  end
+
+  root to: "public/homes#top" 
+
+  devise_for :customers, skip: [:passwords], controllers: {
     sessions:       'public/sessions',
-    passwords:      'public/passwords',
     registrations:  'public/registrations'
   }
+TODO(ここからルートの記述変更を再開する)
 
   namespace :admin do
     get 'order_details/update'
