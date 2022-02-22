@@ -14,7 +14,7 @@ class Customer < ApplicationRecord
   validates :first_name_kana,  presence: true, format: {with: /\A[ァ-ヶー－]+\z/ }
   validates :email,            presence: true
   validates :address,          presence: true
-  validates :telephone_number  presence: true
+  validates :telephone_number, presence: true
 
   def full_name
     first_name + " " + last_name

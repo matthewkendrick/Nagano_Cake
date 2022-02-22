@@ -1,1 +1,30 @@
-TODO(ここから続きの編集を始める)
+<h3 class="offset-1">会員一覧</h3>
+
+<div class="row offset-2 col-8 mt-3">
+  <table class="tabel table-light table-striped">
+    <thead>
+      <tr class="text-white bg-dark">
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customer.each do |customer| %>
+        <tr>
+          <td><%= customer.id %></td>
+          <td><%= link_to customer.full_name, admin_cutomer_path(customer.id), class: "text-dark", style: "text-decoration: underline" %></td>
+          <td><%= customer.email %></td>
+          <td>
+            <% if customer.is_deleted? %>
+              <span class="text-secondary">退会</span>
+            <% else %>
+              <span class="text-success">有効</span>
+            <% end %>
+          </td>
+        </tr> 
+      <% end %>
+    </tbody>
+  </table>
+</div>
