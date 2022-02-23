@@ -1,2 +1,36 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
+<div class="row offset-2">
+  <h3>商品一覧</h3>
+
+  <div class="offset-6 col-1">
+    <%= link_to new_admin_item_path, class: "shadow-sm btn btn-light border-secondary" %>
+  </div>
+
+  <div class="row offset-1 col-10 mt-3">
+    <table class="table table-light table-striped">
+      <thead>
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜き価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= link_to item.name, admin_item_path(item.id), class: "text-dark" %></td>
+            <td><%= item.subtotal %></td>
+            <td><%= item.genre.name %></td>
+            <% if item.is_active? %>
+              <td class="text-success">販売中</td>
+            <% else %>
+              <td class="text-secondary">販売停止中</td>
+            <% end %>
+          </tr> 
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
