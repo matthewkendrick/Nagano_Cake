@@ -21,9 +21,9 @@
 | &nbsp; &nbsp; &nbsp; &nbsp; 管理者トップページ（注文履歴一覧画面） | 2022/02/23 | 2022/02/23 | 2       | ![progress](https://progress-bar.dev/100/ "progress")   |
 | &nbsp; &nbsp; &nbsp; &nbsp; 注文履歴詳細画面                       | 2022/02/23 | 2022/02/23 | 1       | ![progress](https://progress-bar.dev/0/ "progress")   |
 | &nbsp; &nbsp; &nbsp; &nbsp; レイアウト調整                         | 2022/02/23 | 2022/02/24 | 4       | ![progress](https://progress-bar.dev/0/ "progress")   |
-| &nbsp;&nbsp; ECサイト                                              | 2022/02/24 | 2022/02/28 | -       | ![progress](https://progress-bar.dev/3/ "progress")   |
+| &nbsp;&nbsp; ECサイト                                              | 2022/02/24 | 2022/02/28 | -       | ![progress](https://progress-bar.dev/8/ "progress")   |
 | &nbsp; &nbsp; &nbsp; &nbsp;トップページ                            | 2022/02/24 | 2022/02/24 | 2       | ![progress](https://progress-bar.dev/50/ "progress")   |
-| &nbsp; &nbsp; &nbsp; &nbsp;アバウトページ                          | 2022/02/24 | 2022/02/24 | 1       | ![progress](https://progress-bar.dev/0/ "progress")   |
+| &nbsp; &nbsp; &nbsp; &nbsp;アバウトページ                          | 2022/02/24 | 2022/02/24 | 1       | ![progress](https://progress-bar.dev/100/ "progress")   |
 | &nbsp; &nbsp; &nbsp; &nbsp;新規会員登録画面                        | 2022/02/24 | 2022/02/24 | 3       | ![progress](https://progress-bar.dev/0/ "progress")   |
 | &nbsp; &nbsp; &nbsp; &nbsp;ログイン画面                            | 2022/02/25 | 2022/02/25 | 1       | ![progress](https://progress-bar.dev/0/ "progress")   |
 | &nbsp; &nbsp; &nbsp; &nbsp;マイページ                              | 2022/02/25 | 2022/02/25 | 2       | ![progress](https://progress-bar.dev/0/ "progress")   |
