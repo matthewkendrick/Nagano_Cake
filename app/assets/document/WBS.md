@@ -12,8 +12,8 @@
 | **実装・単体テスト**                                               | 2022/02/19 | 2022/02/28 | -       | ![progress](https://progress-bar.dev/36/ "progress")   |
 | &nbsp; &nbsp; 管理者                                               | 2022/02/19 | 2022/02/24 | -       | ![progress](https://progress-bar.dev/62/ "progress")   |
 | &nbsp; &nbsp; &nbsp; &nbsp; ログイン画面                           | 2022/02/19 | 2022/02/19 | 1       | ![progress](https://progress-bar.dev/0/ "progress")   |
-| &nbsp; &nbsp; &nbsp; &nbsp; ジャンル一覧・追加画面                 | 2022/02/19 | 2022/02/19 | 2       | ![progress](https://progress-bar.dev/0/ "progress")   |
-| &nbsp; &nbsp; &nbsp; &nbsp; ジャンル編集画面                       | 2022/02/20 | 2022/02/20 | 1       | ![progress](https://progress-bar.dev/0/ "progress")   |
+| &nbsp; &nbsp; &nbsp; &nbsp; ジャンル一覧・追加画面                 | 2022/02/19 | 2022/02/19 | 2       | ![progress](https://progress-bar.dev/100/ "progress")   |
+| &nbsp; &nbsp; &nbsp; &nbsp; ジャンル編集画面                       | 2022/02/20 | 2022/02/20 | 1       | ![progress](https://progress-bar.dev/100/ "progress")   |
 | &nbsp; &nbsp; &nbsp; &nbsp; 商品新規登録画面                       | 2022/02/20 | 2022/02/20 | 2       | ![progress](https://progress-bar.dev/100/ "progress")   |
 | &nbsp; &nbsp; &nbsp; &nbsp; 商品一覧画面                           | 2022/02/21 | 2022/02/21 | 2       | ![progress](https://progress-bar.dev/100/ "progress")   |
 | &nbsp; &nbsp; &nbsp; &nbsp; 商品詳細画面                           | 2022/02/21 | 2022/02/21 | 2       | ![progress](https://progress-bar.dev/100/ "progress")   |
