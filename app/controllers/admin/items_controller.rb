@@ -1,4 +1,4 @@
-class Admin::ItemsController < ApplicationController
+ Admin::ItemsController < ApplicationController
   def index
     @items = Item.all
   end
@@ -34,4 +34,3 @@ class Admin::ItemsController < ApplicationController
       render :edit
     end
   end
-end

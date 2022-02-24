@@ -39,18 +39,31 @@
             <th>製作ステータス</th>
           </tr>
         </thead>
-        TODO(ここから編集を再開する)
-        <tbody>
-          <tr>
-            <td></td>
-          </tr>
-        </tbody>
       </table>
+    </div>
+  </div>
+
+  <div class="col-md-3 d-flex align-item-end">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <td>商品合計</td>
+          <td><%= @order_items_total_price %></td>
+        </tr>
+        <tr>
+          <td>送料</td>
+          <td><%= @order.shipping_cost %></td>
+        </tr>
+        <tr>
+          <td>請求金額合計</td>
+          <td><%= @order_items_total_price + @order.shipping_cost %></td>
+        </tr>
+      </thead>
       <tbody>
         <tr>
           <td></td>
         </tr>
       </tbody>
-    </div>
+    </table>
   </div>
 </table>
