@@ -1,5 +1,22 @@
-<section class="mt-5 ml-4">
-  <h2 class="section-tt1">管理者トップ</h2>
-  <h1 class="admin_top-txt">
-  </h1>
-</section>
+<h3 class="mb-4">注文履歴一覧</h3>
+
+<table class="table table-light table-striped">
+  <thead>
+    <tr>
+      <th>購入日時</th>
+      <th>購入者</th>
+      <th>注文履歴</th>
+      <th>購入ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.created_at %></td>
+        <td><%= order.customer.full_name %></td>
+        <td><%= order.details.amount %></td>
+        <td><%= order.status %></td>
+      </tr> 
+    <% end %>
+  </tbody>
+</table>
