@@ -1,2 +1,40 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<h3>会員情報編集</h3>
+
+<%= form_with model: @customer, url: customers_path(@customer), local:true do |f| %>
+  <div class="row form-group pt-3">
+    <div class="col-3"><%= f.label :氏名 %></div>
+    <div class="col-md-3"><%= f.text_field :last_name, autofocus: true %></div>
+    <div class="col-md-3"><%= f.text_field :first_name, autofocus: true %></div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-3"><%= f.label :フリガナ %></div>
+    <div class="col-md-3"><%= f.text_field :last_name_kana, autofocus: true %></div>
+    <div class="col-md-3"><%= f.text_field :first_name_kana, autofocus: true %></div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-3"><%= f.label :郵便番号(ハイフンなし), %></div>
+    <div class="col-md-3"><%= f.text_field :postal_code, autofocus: true %></div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-3"><%= f.label :住所 %></div>
+    <div class="col-md-3"><%= f.text_area :address, autofocus: true %></div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-3"><%= f.label :電話番号(ハイフンなし) %></div>
+    <div class="col-md-3"><%= f.text_field :telephone_number, autofocus: true %></div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-3"><%= f.label :メールアドレス %></div>
+    <div class="col-md-3"><%= f.email_field :email, autofocus: true %></div>
+  </div>
+
+  <div class="row form-group offset-3 pt-3">
+    <%= f.submit "変更を保存", class: "btn btn-success" %>
+    <%= link_to "退会する", customers_quit_path, class: "btn btn-danger ml-5" %>
+  </div>
+<% end %>
