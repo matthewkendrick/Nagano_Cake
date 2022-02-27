@@ -1,0 +1,29 @@
+<h3 class="ml-5">配送先編集</h3>
+
+<%= form_with model: @shipping_address, local:true do |f| %>
+  <table class="">
+    <thead>
+      <tr>
+        <th><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></th>
+        <td><%= f.text_field :postal_code, autofocus: true %></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :shipping_address, "住所" %></th>
+        <td><%= f.text_area :address, autofocus: true %></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :shipping_name, "宛名" %></th>
+        <td><%= f.text_field :shipping_name, autofocus: true %></td>
+        <td></td>
+      </tr>
+    </thead>
+  </table>
+
+  <div class="col-md-4">
+    <td><%= f.submit "変更内容を保存", class: "btn btn-success"%></td>
+  </div>
+<% end %>
