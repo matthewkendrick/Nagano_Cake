@@ -1,2 +1,67 @@
-<h1>Public::Orders#log</h1>
-<p>Find me in app/views/public/orders/log.html.erb</p>
+<div class="row offset-3">
+  <h3>注文情報確認</h3>
+</div>
+
+<div class="col-md-8">
+  <table class="table table-light table-borderless border">
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>単価(税込み)</th>
+        <th>数量</th>
+        <th>小計</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td class="align-middle"><%= attachment_image_tag cart_item.item, :image, :fill, 70, 50 %></td>
+          <td class="align-middle"><%= cart_item.item.with_tax_price %>円</td>
+          <td class="align-middle"><%= cart_item.amount %></td>
+          <td class="align-middle"><%= cart_item.subtotal %>円</td>
+        </tr> 
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-sm-4 col-md-4 ml-auto">
+  <table class="table table-light table-borderless border">
+    <tbody>
+      <tr>
+        <th class="text-white bg-black">送料</th>
+        <td><%= @order.shipping_cost %></td>
+      </tr>
+      <tr>
+        <th class="text-white bg-black">商品合計</th>
+        <td><%= @order.payment %>円</td>
+      </tr>
+      <tr>
+        <th class="text-white bg-black">請求金額</th>
+        <td><%= @order.total_price %>円</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="row">
+  <p class="col-3">支払い方法</p>
+  <p><%= @order.payment_method_i18n %></p>
+</div>
+
+<div class="row">
+  <p class="col-3">お届け先</p>
+  <p>
+    〒<%= @order.zip_code %> <%= @order.shipping_address %> <br>
+    <%= order.shipping_name %>
+  </p>
+</div>
+<div class="text-center">
+  <%= form_with model: Order.new do |f| %>
+    <%= f.hidden_field :shipping_name, value: @order.shipping_name %>
+    <%= f.hidden_field :zip_code, value: @order.zip_code %>
+    <%= f.hidden_field :shipping_address, value: @order.shipping_address %>
+    <%= f.hidden_field :payment_method, value: @order.payment_method %>
+    <%= f.submit "注文を確定する", class: "btn btn-success btn-md" %>
+  <% end %>
+</div>
