@@ -1,2 +1,15 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class="row">
+  <div class="col-md-8">
+    <h3>
+      商品一覧
+      <span class="">(全<%= @items.count %>件)</span>
+    </h3>
+    <div class="itemcard">
+      <%= link_to "", item_path(item.id), class: "itemlist" do %>
+        <%= attachment_image_tag item, :image, :fill, 210, 180, fallback: "no_image.jpg" %>
+        <%= item.name %>
+        ¥<%= item_with_tax_price %>
+      <% end %>
+    </div>
+  </div>
+</div>
