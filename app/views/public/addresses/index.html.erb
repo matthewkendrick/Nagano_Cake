@@ -1,0 +1,55 @@
+<h3>配送先登録・一覧</h3>
+
+<%# 登録 %>
+<%= form_with model: @shipping_address, local:true do |f| %>
+  <table class="">
+    <thead>
+      <tr>
+        <th><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></th>
+        <td><%= f.text_field :postal_code, autofocus: true %></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :shipping_address, "住所" %></th>
+        <td><%= f.text_area :address, autofocus: true %></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :shipping_name, "宛名" %></th>
+        <td><%= f.text_field :shipping_name, autofocus: true %></td>
+        <td></td>
+      </tr>
+    </thead>
+  </table>
+
+  <div class="col-md-4">
+    <td><%= f.submit "変更内容を保存", class: "btn btn-success"%></td>
+  </div>
+<% end %>
+
+<%# 一覧 %>
+<table class="table table-light table-striped mt-5 col-12">
+  <thead class="table-active">
+    <tr class="text-white bg-dark">
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shipping_addresses.each do |shipping_address| %>
+      <tr>
+        <td><%= shipping_address.postal_code %></td>
+        <td><%= shipping_address.address %></td>
+        <td><%= shipping_address.name %></td>
+        <td class="text-center">
+          <%= link_to "編集する", edit_shippinig_address_path(shipping_address.id), class: "btn btn-seccess btn-sm mr-auto mb-1" %>
+          <%= link_to "削除する", shipping_addresses_path(shipping_address.id), method: :delete, class: "btn btn-danger btn-sm mb-1" %>
+        </td>
+      </tr> 
+    <% end %>
+  </tbody>
+</table>
