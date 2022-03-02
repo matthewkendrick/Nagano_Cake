@@ -13,8 +13,7 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-          <%# TODO(logo画像を挿入) %>
-          <div><%= link_to "ロゴ画像を挿入", admin_items_path %></div>
+          <%= link_to image_tag("logo.jpeg", size: "80x90", class:"rounded-circle"), root_path %>
         </div>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" >
@@ -48,7 +47,7 @@
     </main>
 
     <footer>
-      <div class="container">
+      <div class="container text-center">
         <div class="footer_copyright">
           Copyright &copy; 1992 - 2022 NaganoCake Co. All Rights Reserved.
         </div>
