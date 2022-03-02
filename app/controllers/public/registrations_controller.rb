@@ -4,15 +4,15 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  before_action :configure_permitted_parameters, only: [:new, :create]
+  before_action :configure_sign_up_params, only: [:new, :create]
 
-  def new
-    @customer = Customer.new
-  end
+  # def new
+  #   @customer = Customer.new
+  # end
 
-  private
+  # private
   
-  def configure_permitted_parameters
+  def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name,
                                                        :first_name_kana,
                                                        :last_name,
@@ -20,7 +20,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
                                                        :postal_code,
                                                        :address,
                                                        :email,
-                                                       :phone_number,
+                                                       :telephone_number,
                                                        ])
   end
 

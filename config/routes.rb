@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   }
 
   devise_for :customers, skip: [:passwords], controllers: {
-    sessions:       "customer/sessions",
-    registrations:  "customer/registrations"
+    sessions:       "public/sessions",
+    registrations:  "public/registrations"
   }
 
   namespace :admin do
-    root to: "homes#top"
+    root to: "homes#top", as: 'top'
 
     resources :items,         expect: [:destroy]
     resources :genres,        only:   [:index, :edit, :create, :update]
@@ -22,10 +22,12 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
 
-    get     "/about"           => "homes#about"
-    get     "/customers/quit"  => "customers#quit"
-    patch   "/customers/out"   => "customers#out"
-    delete  "/cart_items"      => "cart_items#destroy_all"
+    get     "customers/mypage"      => "customers#show"
+    get     "customers/information" => "customers#edit"
+    get     "/about"                => "homes#about"
+    get     "/customers/quit"       => "customers#quit"
+    patch   "/customers/out"        => "customers#out"
+    delete  "/cart_items"           => "cart_items#destroy_all"
 
     resources :items,       only:   [:index, :show]
     resources :customers,   only:   [:show,  :edit,   :update]
