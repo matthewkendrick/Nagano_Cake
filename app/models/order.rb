@@ -1,5 +1,4 @@
 class Order < ApplicationRecord
-  # NOTE(enumの設定だけができている状態)
   belongs_to  :customer
   has_many    :order_details, dependent: :destroy
 

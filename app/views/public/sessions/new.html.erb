@@ -5,13 +5,11 @@
 <%= form_with model: @customer, url: customer_session_path, local:true do |f| %>
   <div class="container">
     <div class="form-group grid g-3 pt-3">
-      <div class="col-6"><%= f.label :email, "メールアドレス" %></div>
-      <div class="col-6"><%= f.email_field :email, prompt: "sample@icloud.com", autofocus: true, class: "" %></div>
+      <div class="col-6"><%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %></div>
     </div>
 
     <div class="form-group grid g-3">
-      <div class="col-6"><%= f.label :password, "パスワード" %></div>
-      <div class="col-6"><%= f.password_field :password, autofocus: true %></div>
+      <div class="col-6"><%= f.password_field :password, autofocus: true, class: "form-control", placeholder: "パスワード" %></div>
     </div>
 
     <div class="form-group grid g-3 pt-2">

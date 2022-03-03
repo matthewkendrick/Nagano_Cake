@@ -1,62 +1,61 @@
+<%# TODO(レイアウトを整える) %>
 <h2>新規会員登録</h2>
   <%= form_with model: @customer, url: customer_registration_path, local:true do |f| %>
-    <div class="row form-group pt-3">
+    <div class="form-row form-group pt-3">
       <div class="col-md-3"><%= f.label :名前 %></div>
       
-      <div class="col-md-1"><%= f.label :last_name, "(姓)" %></div>
-      <div class="col-md-3"><%= f.text_field :last_name, autofocus: true %></div>
-
-      <div class="col-md-1"><%= f.label :first_name, "(名)" %></div>
-      <div class="col-md-3"><%= f.text_field :first_name, autofocus: true %></div>
+      <div class="col-md-4"><%= f.text_field :last_name, autofocus: true, class: "form-control", placeholder: "(姓)" %></div>
+      <div class="col-md-4"><%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "(名)" %></div>
     </div>
 
-    <div class="row form-group pt-3">
+    <div class="form-row form-group pt-3">
       <div class="col-md-3"><%= f.label :フリガナ %></div>
 
-      <div class="col-md-1"><%= f.label :last_name_kana, "(セイ)" %></div>
-      <div class="col-md-3"><%= f.text_field :last_name_kana, autofocus: true %></div>
-
-      <div class="col-md-1"><%= f.label :first_name_kana, "(メイ)" %></div>
-      <div class="col-md-3"><%= f.text_field :last_name_kana, autofocus: true %></div>
+      <div class="col-md-4"><%= f.text_field :last_name_kana, autofocus: true, class: "form-control", placeholder: "(セイ)" %></div>
+      <div class="col-md-4"><%= f.text_field :last_name_kana, autofocus: true, class: "form-control", placeholder: "(メイ)" %></div>
     </div>
 
-    <div class="row form-group pt-3">
-      <div class="col-md-1"><%= f.label :email, "メールアドレス" %></div>
-      <div class="col-md-3"><%= f.email_field :email, autofocus: true %></div>
+    <div class="form-row form-group pt-3">
+      <div class="col-md-3"><%= f.label :email, "メールアドレス" %></div>
+      <div class="col-md-5"><%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "sample@nagano.com" %></div>
     </div>
 
-    <div class="row form-group pt-3">
-      <div class="col-md-1"><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></div> 
-      <div class="col-md-3"><%= f.text_field :postal_code, autofocus: true %></div>
-    </div>
-
-    <div class="row form-group pt-3">
-      <div class="col-md-1"><%= f.label :address, "住所" %></div>
-      <div class="col-md-3"><%= f.text_area :address, autofocus: true %></div>
-    </div>
-
-    <div class="row form-group pt-3">
-      <div class="col-md-1"><%= f.label :telephone_number, "電話番号" %></div>
-      <div class="col-md-3"><%= f.text_field :telephone_number, autofocus: true %></div>
-    </div>
-
-    <div class="row form-group pt-3">
-      <div class="col-md-3">
-        <%= f.label :password, "パスワード" %>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> 文字以上)</em>
-        <% end %>
+    <div class="form-row form-group pt-3">
+      <div class="col-md-3"><%= f.label :postal_code, "郵便番号" %></div> 
+      <div class="col-md-5"><%= f.text_field :postal_code, autofocus: true, class: "form-control", placeholder: "〒0001111 (ハイフンなし)" %>
       </div>
-      <div class="col-md-8"><%= f.password_field :password, autofocus: true %></div>
     </div>
 
-    <div class="row form-group pt-3">
-      <div class="col-md-3"><%= f.label :password, "パスワード(確認用)" %></div>
-      <div class="col-md-8"><%= f.password_field :password_confirmation, autofocus: true %></div>
+    <div class="form-row form-group pt-3">
+      <div class="col-md-3"><%= f.label :address, "住所" %></div>
+      <div class="col-md-5"><%= f.text_area :address, autofocus: true, class: "form-control", placeholder: "", rows: "5" %></div>
     </div>
 
-    <div class="form-group offset-3">
-      <%= f.submit "新規登録", class: "btn btn-seccess" %>
+    <div class="form-row form-group pt-3">
+      <div class="col-md-3"><%= f.label :telephone_number, "電話番号" %></div>
+      <div class="col-md-5"><%= f.text_field :telephone_number, autofocus: true, class: "form-control", placeholder: "" %></div>
+    </div>
+
+    <div class="form-row form-group pt-3">
+      <div class="col-md-3"><%= f.label :password, "パスワード" %></div>
+      <div class="col-md-8">
+        <%= f.password_field :password, autofocus: true, class: "form-control", placeholder: "Enter Password" %>
+        <span class="help-block text-muted">( <%= @minimum_password_length %> 文字以上)</span>
+      </div>
+    </div>
+
+    <div class="form-row form-group pt-3">
+      <div class="col-md-3"></div>
+      <div class="col-md-8">
+        <%= f.password_field :password_confirmation, autofocus: true, class: "form-control", placeholder: "Enter Password" %>
+        <span class="help-block text-muted">(確認用)</span>
+      </div>
+    </div>
+
+    <div class="form-row form-group mx-auto">
+      <div class="col mx-auto">
+        <%= f.submit "新規登録", class: "btn btn-success w-50" %>
+      </div>
     </div>
   <% end %>
 
