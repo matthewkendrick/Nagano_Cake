@@ -41,7 +41,7 @@
         <div class="col-sm-3"><%= f.label :password, "パスワード" %></div>
         <div class="col-sm-8">
           <%= f.password_field :password, autofocus: true, class: "form-control", placeholder: "Enter Password" %>
-          <span class="help-block text-muted">( <%= @minimum_password_length %> 文字以上)</span>
+          <small class="help-block text-muted">( <%= @minimum_password_length %> 文字以上)</small>
         </div>
       </div>
 
@@ -49,7 +49,7 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-8">
           <%= f.password_field :password_confirmation, autofocus: true, class: "form-control", placeholder: "Enter Password" %>
-          <span class="help-block text-muted">(確認用)</span>
+          <small class="help-block text-muted">(確認用)</small>
         </div>
       </div>
       <div class="row text-center pt-4">
