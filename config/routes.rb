@@ -27,12 +27,12 @@ Rails.application.routes.draw do
     get     "/about"                  => "homes#about"
     get     "/cart_items"             => "cart_items#index"
     get     "/customers/quit"         => "customers#quit"
-    patch   "/customers/out"          => "customers#out"
+    get     "/customers/sign_out"     => "customers#out"
     delete  "/cart_items/destroy_all" => "cart_items#destroy_all"
 
     resources :items,       only:   [:index, :show]
     resources :customers,   only:   [:show,  :edit,   :update]
-    resources :deliveries,  expect: [:new, :show]
+    resources :deliveries,  expect: [:new,   :show]
     resources :orders,      expect: [:edit,  :update, :destroy] do
       collection do
         get   'thanks'

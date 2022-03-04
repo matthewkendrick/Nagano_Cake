@@ -6,9 +6,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   before_action :configure_sign_up_params, only: [:new, :create]
 
-  # def new
-  #   @customer = Customer.new
-  # end
+  def new
+    @customer = Customer.new
+  end
 
   # private
   
