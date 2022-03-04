@@ -1,13 +1,16 @@
-<h2>カート</h2>
 <div class="row">
-  <div class="col text-right">
-  <%# TODO(カートを空にできない不具合を修正する) %>
-    <%# <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger btn-md" %> %>
+  <div>
+    <h2>カート</h2>
+    <div class="col text-right">
+      <% if current_customer.cart_items.count != 0 %>
+        <%= link_to "カートを空にする", @destroy_all_path, method: :delete, class: "btn btn-danger btn-md" %>
+      <% end %>
+    </div>
   </div>
 </div>
 
 <% if @cart_items.empty? %>
-  <div class="row">
+  <div class="row pt-3">
     <div class="pl-5">カートが空です</div>
   </div>
 <% else %>

@@ -1,4 +1,6 @@
 class Admin::OrdersController < ApplicationController
+  # TODO(index等の定義ができていない)
+  
   def show
     @order = Order.find(params[:id])
   end
