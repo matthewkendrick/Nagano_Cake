@@ -1,17 +1,17 @@
 <h3 class="offset-1">会員一覧</h3>
 
-<div class="row offset-2 col-8 mt-3">
-  <table class="tabel table-light table-striped">
+<div class="row offset-1">
+  <table class="tabel table-light table-striped mx-auto">
     <thead>
-      <tr class="text-white bg-dark">
-        <th>会員ID</th>
-        <th>氏名</th>
-        <th>メールアドレス</th>
-        <th>ステータス</th>
+      <tr class="">
+        <th class="table-active" width="100">会員ID</th>
+        <th class="table-active" width="150">氏名</th>
+        <th class="table-active" width="250">メールアドレス</th>
+        <th class="table-active" width="100">ステータス</th>
       </tr>
     </thead>
     <tbody>
-      <% @customer.each do |customer| %>
+      <% @customers.each do |customer| %>
         <tr>
           <td><%= customer.id %></td>
           <td><%= link_to customer.full_name, admin_cutomer_path(customer.id), class: "text-dark", style: "text-decoration: underline" %></td>
