@@ -1,12 +1,15 @@
+<h2>カート</h2>
 <div class="row">
-  <h3 class="offset-1">カート</h3>
   <div class="col text-right">
-    <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger btn-md" %>
+  <%# TODO(カートを空にできない不具合を修正する) %>
+    <%# <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger btn-md" %> %>
   </div>
 </div>
 
 <% if @cart_items.empty? %>
-  <p>商品を追加してください</p>
+  <div class="row">
+    <div class="pl-5">カートが空です</div>
+  </div>
 <% else %>
   <div class="row pt-5">
     <table class="table table-light table-borderless border">
@@ -43,21 +46,20 @@
       </tbody>
     </table>
   </div>
-<% end %>
-
-<div class="row pt-4">
-  <div class="col-5"><%= link_to "買い物を続ける", root_path, class: "btn btn-success btn-md" %></div>
-
-  <table class="table table-light table-borderless border col-4 ml-auto">
+  <table class="table table-light table-borderless border col-4 ml-auto mt-9">
     <tr>
-      <th class="text-white bg-black">合計金額</th>
+      <th class="bg-black">合計金額</th>
       <th><%= @payment %>円</th>
     </tr>
   </table>
+<% end %>
+
+<div class="row ml-3 pt-3">
+  <div class="col"><%= link_to "買い物を続ける", root_path, class: "btn btn-success btn-md" %></div>
 </div>
 
-<% if @cart_items.empty? %>
-  <div class="text-center">
-    <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
+<% if current_customer.cart_items.count != 0 %>
+  <div class="text-center pt-5">
+    <%= link_to "情報入力に進む", new_order_path, class: "btn btn-primary w-50" %>
   </div>
 <% end %>

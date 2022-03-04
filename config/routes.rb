@@ -22,9 +22,10 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
 
-    get     "customers/my_page"      => "customers#show", as:"my_page"
+    get     "customers/my_page"     => "customers#show", as:"my_page"
     get     "customers/information" => "customers#edit"
     get     "/about"                => "homes#about"
+    get     "/cart_items"           => "cart_items#index"
     get     "/customers/quit"       => "customers#quit"
     patch   "/customers/out"        => "customers#out"
     delete  "/cart_items"           => "cart_items#destroy_all"
