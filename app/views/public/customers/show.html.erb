@@ -2,7 +2,6 @@
 
 <div class="row">
   <h5 class="font-weight-bold col-9 m-0 align-self-center">登録情報</h5>
-  <div class="col-5 pt-4"><%= link_to "編集する", edit_customer_path(current_customer.id), class: "btn btn-sm btn-success" %></div>
 </div>
 
 <table class="table table-light col-md-8 mt-3">
@@ -39,6 +38,11 @@
   </thead>
 </table>
 
+<div class="row">
+  <div class="col-5">
+    <%= link_to "編集する", edit_customer_path(current_customer.id), class: "btn btn-sm btn-success mb-5" %>
+  </div>
+</div>
 <div class="row pt-3">
   <h5 class="font-weight-bold col-3 align-self-center">配送先</h5>
   <div class="col-5"><%= link_to "一覧を見る", @addresses_path, class: "btn btn-sm btn-primary" %></div>
