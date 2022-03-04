@@ -9,12 +9,12 @@
   <thead>
     <tr>
       <th class="text-white bg-black">氏名</th>
-      <td><%= @customer.full_name %></td>
+      <td><%= @customer.last_name + @customer.first_name %></td>
     </tr>
 
     <tr>
       <th class="text-white bg-black">カナ</th>
-      <td><%= @customer.full_name_kana %></td>
+      <td><%= @customer.last_name_kana + @customer.first_name_kana %></td>
     </tr>
 
     <tr>
@@ -41,7 +41,7 @@
 
 <div class="row pt-3">
   <h3 class="font-weight-bold col-2 m-0 align-self-center">配送先</h3>
-  <div class="col-5"><%= link_to "一覧を見る", shipping_addresses_path, class: "btn btn-parimary" %></div>
+  <div class="col-5"><%= link_to "一覧を見る", @addresses_path, class: "btn btn-parimary" %></div>
 </div>
 
 <div class="row pt-3">
