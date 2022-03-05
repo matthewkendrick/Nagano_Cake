@@ -1,6 +1,6 @@
 <h2>ジャンル編集</h2>
 
-<div class="col-8 mt-5">
+<div class="mt-5">
   <%= form_with model: @genre, url: admin_genre_path, local:true do |f| %>
     <div class="form-row">
       <div class="col-9"><%= f.text_field :name, class: "form-control" %></div>
