@@ -1,49 +1,45 @@
-<h3 class="offset-1"><%= @customer.full_name %>さんの会員情報編集</h3>
+<h2 class="offset-1"><%= @customer.full_name %>さんの会員情報編集</h2>
 
-<div class="row ml-4 mt-3">
-  <%= form_with model: @customer, url: admin_cutomer_path(@customer), local:true do |f| %>
-    <div class="form-group  row">
+<div class="row ml-5 mt-3">
+  <%= form_with model: @customer, url: admin_customer_path(@customer), local:true do |f| %>
+    <div class="form-row form-group  row">
       <div class="col-4">会員ID</div>
       <div class="col-8"><%= @customer.id %></div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-row form-group row">
       <div class="col-4"><%= f.label :"名前" %></div>
-      <div class="col-4"><%= f.label :"(姓)" %></div>
-      <div class="col-4"><%= f.text_field :last_name, autofocus: true %></div>
-      <div class="col-4"><%= f.label :"(名)" %></div>
-      <div class="col-4"><%= f.text_field :first_name, autofocus: true %></div>
+      <div class="col-4"><%= f.text_field :last_name, class: "form-control" %></div>
+      <div class="col-4"><%= f.text_field :first_name, class: "form-control" %></div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-row form-group row">
       <div class="col-4"><%= f.label :"フリガナ" %></div>
-      <div class="col-4"><%= f.label :"(セイ)" %></div>
-      <div class="col-4"><%= f.text_field :last_name, autofocus: true %></div>
-      <div class="col-4"><%= f.label :"(メイ)" %></div>
-      <div class="col-4"><%= f.text_field :first_name, autofocus: true %></div>
+      <div class="col-4"><%= f.text_field :last_name_kana, class: "form-control" %></div>
+      <div class="col-4"><%= f.text_field :first_name_kana, class: "form-control" %></div>
     </div>
 
-    <div class="form-group row">
-      <div class="col-4"><%= f.label :"郵便番号(ハイフンなし)", autofocus: true %></div>
-      <div class="col-8"><%= f.text_field :postal_code, autofocus: true %></div>
+    <div class="form-row form-group row">
+      <div class="col-4"><%= f.label :"郵便番号", autofocus: true %></div>
+      <div class="col-4"><%= f.text_field :postal_code, class: "form-control" %></div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-row form-group row">
       <div class="col-4"><%= f.label :"住所" %></div>
-      <div class="col-8"><%= f.text_area :address, autofocus: true %></div>
+      <div class="col-8"><%= f.text_area :address, class: "form-control" %></div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-row form-group row">
       <div class="col-4"><%= f.label :"電話番号" %></div>
-      <div class="col-8"><%= f.text_field :telephone_number, autofocus: true %></div>
+      <div class="col-8"><%= f.text_field :telephone_number, class: "form-control" %></div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-row form-group row">
       <div class="col-4"><%= f.label :"メールアドレス" %></div>
-      <div class="col-8"><%= f.email_field :email, autofocus: true %></div>
+      <div class="col-8"><%= f.email_field :email, class: "form-control" %></div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-row form-group row">
       <div class="col-4"><%= f.label :"会員ステータス" %></div>
       <div class="col-8">
         <%= f.radio_button :is_deleted, false %>
@@ -53,8 +49,6 @@
       </div>
     </div>
 
-    <div class="actions">
-      <%= f.submit :"変更を保存", class: "btn btn-success" %>
-    </div>
+    <div class="text-center"><%= f.submit :"変更を保存", class: "btn btn-success mt-3 w-50" %></div>
   <% end %>
 </div>
