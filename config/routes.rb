@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :items,         expect: [:destroy]
     resources :genres,        only:   [:index, :edit, :create, :update]
     resources :customers,     only:   [:index, :show, :edit,   :update]
-    resources :orders,        only:   [:index, :show, :update]
+    resources :orders,        only:   [:show,  :update]
     resources :order_details, only:   [:update]
   end
 
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get     "/about"                  => "homes#about"
     get     "/cart_items"             => "cart_items#index"
     get     "/customers/quit"         => "customers#quit"
-    patch   "/customers/sign_out"     => "customers#out"
+    patch   "/customers/sign_out"     => "customers#sign_out"
     delete  "/cart_items/destroy_all" => "cart_items#destroy_all"
 
     resources :items,       only:   [:index, :show]

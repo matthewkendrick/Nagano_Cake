@@ -4,8 +4,8 @@
   <thead>
     <tr>
       <th>購入者</th>
-      <td><%= @order.customer.full_name %></td>
-    </tr>
+      <td><%= link_to @customer.full_name, admin_customer_path(@customer) %></td>
+    r>
     <tr>
       <th>注文日</th>
       <td><%= @order.created_at %></td>
@@ -20,7 +20,7 @@
     </tr>
     <tr>
       <th>注文ステータス</th>
-        <%= form_with model: @order, admin_order_path(@order.id) local:true do |f| %>
+        <%= form_with model: @order, url: admin_order_path(@order.id), local:true do |f| %>
           <%= f.collection_select :status, {selected: @order.status} %></td>
           <%= f.submit "更新", class: "btn btn-seccess ml-3" %>
         <% end %>
