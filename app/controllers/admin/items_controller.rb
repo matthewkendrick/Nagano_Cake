@@ -5,9 +5,13 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @genres = Genre.all
-    @item   = Item.new(item_params)
-    item.save
-    redirect_to items_admin_path 
+    @item   = Item.new
+    if @item.save
+      redirect_to admin_item_path(@item.id) 
+    else
+      @genres = Genre.all
+      render :new
+    end
   end
 
   def create

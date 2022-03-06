@@ -37,9 +37,9 @@
         </div>
       </div>
 
-<%# WARNING(新規登録ができない = エラーは発生していない) %>
+<%# WARNING(商品の新規作成ができない = エラー発生中) %>
       <div class="text-center mt-4">
-        <%= f.submit "新規登録", class: "btn btn-success w-50" %>
+        <%= f.submit "新規登録", new_admin_item_path, class: "btn btn-success w-50" %>
       </div>
     <% end %>
 </div>
