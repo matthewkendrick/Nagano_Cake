@@ -12,16 +12,16 @@
     <div class="col-md-9 mx-auto">
       <div class="form-group row pb-3">
         <div class="col-md-3"><%= f.label :email, "メールアドレス" %></div>
-        <div class="col-md-9"><%= f.email_field :email, autocomplete: "email" %></div>
+        <div class="col-md-9"><%= f.email_field :email %></div>
       </div>
 
       <div class="form-group row pb-3">
       <div class="col-md-3"><%= f.label :password, "パスワード" %></div>
-      <div class="col-md-9"><%= f.password_field :password, autocomplete: "current-password" %></div>
+      <div class="col-md-9"><%= f.password_field :password %></div>
       </div>
 
       <div class="form-group row offset-3">
-        <%= f.submit "ログイン", class: "btn btn-primary", style: "width: 150px" %>
+        <%= f.submit "ログイン", class: "btn btn-primary w-50" %>
       </div>
     </div>
   <% end %>
