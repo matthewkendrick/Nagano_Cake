@@ -27,22 +27,23 @@
               <div class="text-light text-right">
                 <%= "#{current_customer.last_name}さん、こんにちは!" %>
               </div>
-              <li class="nav-item text-right"><%= link_to "  マイページ", customer_path(current_customer.id), class: "fas fa-home nav-link text-light" %></li>
-              <li class="nav-item text-right"><%= link_to "  商品一覧", items_path, class: "fas fa-list nav-link text-light" %></li>
-              <li class="nav-item text-right"><%= link_to "  カート", cart_items_path, class: "fas fa-cart-plus nav-link text-light" %></li>
+              <li class="nav-item text-right"><%= link_to "  マイページ", customer_path(current_customer.id), class: "fas fa-home text-light" %></li>
+              <li class="nav-item text-right"><%= link_to "  商品一覧", items_path, class: "fas fa-list text-light" %></li>
+              <li class="nav-item text-right"><%= link_to "  カート", cart_items_path, class: "fas fa-cart-plus text-light" %></li>
               <%# WARNING(ログアウトを押すと、アカウントが削除される) %>
-              <li class="nav-item text-right"><%= link_to "  ログアウト", destroy_customer_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-light" %></li>
+              <li class="nav-item text-right"><%= link_to "  ログアウト", destroy_customer_session_path, method: :delete, class: "fas fa-sign-out-alt text-light" %></li>
             <% elsif admin_signed_in? %>
-              <li class="nav-item text-right"><%= link_to "  商品一覧", admin_items_path %></li>
-              <li class="nav-item text-right"><%= link_to "  会員一覧", admin_customers_path %></li>
-              <li class="nav-item text-right"><%= link_to "  注文履歴一覧", admin_orders_path %></li>
-              <li class="nav-item text-right"><%= link_to "  ジャンル一覧", admin_genres_path %></li>
-              <li class="nav-item text-right"><%= link_to "  ログアウト", destroy_admin_session_path, method: :delete %></li>
+              <li class="nav-item text-right"><%= link_to "商品一覧", admin_items_path, class: "text-light" %></li>
+              <li class="nav-item text-right"><%= link_to "会員一覧", admin_customers_path, class: "text-light" %></li>
+              <li class="nav-item text-right"><%= link_to "注文履歴一覧", admin_orders_path, class: "text-light" %></li>
+              <li class="nav-item text-right"><%= link_to "ジャンル一覧", admin_genres_path, class: "text-light" %></li>
+              <%# WARNING(ルートエラーが発生中) %>
+              <li class="nav-item text-right"><%= link_to "  ログアウト", destroy_admin_session_path, method: :delete, class: "text-light" %></li>
             <% else %>
-              <li class="nav-item text-right"><%= link_to "  About Us", about_path, class: "fas fa-birthday-cake nav-link text-light" %></li>
-              <li class="nav-item text-right"><%= link_to "  商品一覧", items_path, class: "fas fa-list nav-link text-light" %></li>
-              <li class="nav-item text-right"><%= link_to "  新規登録", new_customer_registration_path, class: "fas fa-user-plus nav-link text-light" %></li>
-              <li class="nav-item text-right"><%= link_to "  ログイン", new_customer_session_path, class: "fas fa-sign-in-alt nav-link text-light" %></li>
+              <li class="nav-item text-right"><%= link_to "  About Us", about_path, class: "fas fa-birthday-cake text-light" %></li>
+              <li class="nav-item text-right"><%= link_to "  商品一覧", items_path, class: "fas fa-list text-light" %></li>
+              <li class="nav-item text-right"><%= link_to "  新規登録", new_customer_registration_path, class: "fas fa-user-plus text-light" %></li>
+              <li class="nav-item text-right"><%= link_to "  ログイン", new_customer_session_path, class: "fas fa-sign-in-alt text-light" %></li>
             <% end %>
           </ul>
         </div>

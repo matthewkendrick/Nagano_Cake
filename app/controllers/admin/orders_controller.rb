@@ -8,6 +8,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
+    # WARNING(会員情報詳細から注文履歴が見れない)
     @order = Order.find(params[:id])
     if @order.update(order_params)
       flash[:notice] = "注文ステータスを更新しました"

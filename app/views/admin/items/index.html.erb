@@ -15,7 +15,7 @@
           <th>商品名</th>
           <th>税抜き価格</th>
           <th>ジャンル</th>
-          <th>ステータス</th>
+          <th class="text-center">ステータス</th>
         </tr>
       </thead>
       <tbody>
@@ -26,9 +26,9 @@
             <td><%= item.subtotal %></td>
             <td><%= item.genre.name %></td>
             <% if item.is_active? %>
-              <td class="text-success">販売中</td>
+              <td class="text-success text-center">販売中</td>
             <% else %>
-              <td class="text-secondary">販売停止中</td>
+              <td class="text-secondary text-center">販売停止中</td>
             <% end %>
           </tr> 
         <% end %>
