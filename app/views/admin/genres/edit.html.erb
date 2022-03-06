@@ -4,7 +4,7 @@
   <%= form_with model: @genre, url: admin_genre_path, local:true do |f| %>
     <div class="form-row">
       <div class="col-9"><%= f.text_field :name, class: "form-control" %></div>
-      <%# WARNING(ジャンル名の変更ができない) %>
+      <%# WARNING(ジャンル名の変更ができない = ルートエラー発生中) %>
       <div class="col-3"><%= f.submit "ジャンル名を変更", class: "btn btn-primary" %></div>
     </div>
   <% end %>

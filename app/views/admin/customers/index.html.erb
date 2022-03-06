@@ -1,13 +1,13 @@
-<h3 class="offset-1">会員一覧</h3>
+<h2>会員一覧</h2>
 
-<div class="row offset-1">
+<div class="row ml-3">
   <table class="tabel table-light table-striped mx-auto">
     <thead>
       <tr class="">
         <th class="table-active" width="100">会員ID</th>
         <th class="table-active" width="150">氏名</th>
         <th class="table-active" width="250">メールアドレス</th>
-        <th class="table-active" width="100">ステータス</th>
+        <th class="table-active text-center" width="100">ステータス</th>
       </tr>
     </thead>
     <tbody>
@@ -16,7 +16,7 @@
           <td><%= customer.id %></td>
           <td><%= link_to customer.last_name + customer.first_name, admin_customer_path(customer.id), class: "text-dark", style: "text-decoration: underline" %></td>
           <td><%= customer.email %></td>
-          <td>
+          <td class="text-center">
             <% if customer.is_deleted? %>
               <span class="text-secondary">退会</span>
             <% else %>
