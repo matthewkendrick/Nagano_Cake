@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get     "/about"                  => "homes#about"
     get     "/cart_items"             => "cart_items#index"
     get     "/customers/quit"         => "customers#quit"
-    get   "/customers/sign_out"          => "customers#out", as: "out"
+    patch   "/customers/sign_out"     => "customers#out", as: "out"
     delete  "/cart_items/destroy_all" => "cart_items#destroy_all"
 
     resources :items,       only:   [:index, :show]

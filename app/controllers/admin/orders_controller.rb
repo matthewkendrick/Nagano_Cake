@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
   def index
-    @order = Order.page(params[:page]).order(id: "desc").per(5)
+    @orders = Order.page(params[:page]).order(id: "desc").per(8)
   end
 
   def show
@@ -13,7 +13,7 @@ class Admin::OrdersController < ApplicationController
       flash[:notice] = "注文ステータスを更新しました"
     end
     order.save
-    redirect_to admin_order_path(@order)
+    redirect_to admin_order_path(order.id)
   end
 
   private
