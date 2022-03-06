@@ -33,11 +33,11 @@ class Admin::ItemsController < ApplicationController
     else
       render :edit
     end
+  end
 
-    private
-    
-    def item_params
-      params.require(:item).permit(:genre_id, :name, :detail, :image, :with_tax_price, :is_active)
-    end
+  private
+
+  def item_params
+    params.require(:item).permit(:image, :name, :detail, :genre_id, :price, :is_active)
   end
 end

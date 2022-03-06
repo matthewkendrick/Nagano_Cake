@@ -27,7 +27,7 @@ class Public::SessionsController < Devise::SessionsController
   def active_customer?
     @customer = Customer.find_by(email: params[:customer][:email])
     return if !@customer
-    if (@customer.valid_password?(params[:customer][:password])) && (@customer.is_deleted == true)
+    if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
       flash[:notice] = "アカウントが退会済みです。新規登録を行なってください。"
       redirect_to new_customer_registration_path
     end
