@@ -1,16 +1,19 @@
 class Public::CartItemsController < ApplicationController
   def create
-    cart_items = current_customer.cart_items
-    cart_item = cart_items.find_by(item_id: params[:item_id])
-    if cart_item
-      cart_item.amount += params[:cart_item][:amount].to_i
-      cart_item.save
+    @cart_items = current_customer.cart_items.find_by(item_id: params[:item_id])
+
+    if @cart_item.present?
+      @cart_itemamount += params[:amount].to_i
     else
-      cart_item = CartItem.new(cart_item_params)
-      cart_item.customer_id = current_customer.id
-      cart_item.save
+      @cart_item = current_customer.cart_items.new(cart_item_params)
     end
-    redirect_to cart_items_path 
+
+    if @cart_item.save
+      redirect_to cart_items_path, notice: '商品を追加しました' 
+    else
+      flash[:alert] = "追加できませんでした"
+      redirect_to request.referer
+    end
   end
 
   def index
@@ -38,6 +41,6 @@ class Public::CartItemsController < ApplicationController
   private
   
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :amount)
+    params.permit(:item_id, :amount)
   end
 end
