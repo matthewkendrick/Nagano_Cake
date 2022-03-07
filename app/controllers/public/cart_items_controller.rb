@@ -1,9 +1,9 @@
 class Public::CartItemsController < ApplicationController
   def create
-    @cart_items = current_customer.cart_items.find_by(item_id: params[:item_id])
+    @cart_item = current_customer.cart_items.find_by(item_id: params[:item_id])
 
     if @cart_item.present?
-      @cart_itemamount += params[:amount].to_i
+      @cart_item.amount += params[:amount].to_i
     else
       @cart_item = current_customer.cart_items.new(cart_item_params)
     end
@@ -28,14 +28,15 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
-    cart_item = CartItem.find(params[:id])
-    cart_item.destroy
-    redirect_to cart_items_path 
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
+    redirect_to cart_items_path, notice: '商品を削除しました' 
   end
 
   def destroy_all
-    current_customer.cart_items.destroy_all
-    redirect_to cart_items_path 
+    @cart_items = current_customer.cart_items.all
+    @cart_items.destroy_all
+    redirect_to cart_items_path, notice: '全ての商品を削除しました' 
   end
 
   private

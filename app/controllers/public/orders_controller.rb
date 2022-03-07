@@ -1,6 +1,7 @@
 class Public::OrdersController < ApplicationController
   def new
-    @order = Order.find(params[:id])
+    @order = current_customer.order.new
+    @delivery = Delivery.new
   end
 
   def log
@@ -51,5 +52,9 @@ class Public::OrdersController < ApplicationController
   
   def order_params
     params.require(:order).permit(:payment_method, :shipping_address, :zip_code, :shipping_name, :shipping_cost, :total_price, :customer_id)
+  end
+
+  def delivery_params
+    params.permit(:name, :address, :postal_code)
   end
 end
