@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     delete  "/cart_items/destroy_all" => "cart_items#destroy_all"
 
     resources :items,       only:   [:index, :show]
+    resources :cart_items,  only:   [:index, :create, :update, :destroy]
     resources :customers,   only:   [:show,  :edit,   :update]
     resources :deliveries,  expect: [:new,   :show]
     resources :orders,      expect: [:edit,  :update, :destroy] do

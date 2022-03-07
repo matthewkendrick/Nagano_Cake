@@ -11,18 +11,20 @@
 </p>
 
 <h3 class="mt-5">新着商品</h3>
-<div class="card-list-container pt-3 row">
-  <% @items.each do |item| %>
-    <div class="card mt-4 shadow-lg">
-      <%= link_to item_path(item) do %>
-        <%= attachment_image_tag item, :image, :fill, 600, 600, class: "card-img-top py-3 px-2" %>
-      <% end %>
-      <div class="card-body">
-        <div class="card-title"><%= item.name %></div>
-        <div>¥ <%= item.with_tax_price %></div>
+<div class="row">
+  <div class="col-10 ml-5">
+    <% @items.each do |item| %>
+      <div class="card mt-5 ml-5 shadow-lg">
+        <%= link_to item_path(item.id) do %>
+          <%= attachment_image_tag item, :image, :fill, 650, 600, class: "card-img-top py-3 px-2" %>
+        <% end %>
+        <div class="card-body">
+          <div class="card-title"><%= item.name %></div>
+          <h3>¥ <%= item.with_tax_price %></h3>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 <div class="text-light mt-5">

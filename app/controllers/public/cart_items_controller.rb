@@ -1,9 +1,9 @@
 class Public::CartItemsController < ApplicationController
   def create
     cart_items = current_customer.cart_items
-    cart_item = cart_items.find_by(item_id: params[:cart_item][:item_id])
+    cart_item = cart_items.find_by(item_id: params[:item_id])
     if cart_item
-      cart_item.amount+=params[:cart_item][:amount].to_i
+      cart_item.amount += params[:cart_item][:amount].to_i
       cart_item.save
     else
       cart_item = CartItem.new(cart_item_params)
@@ -15,6 +15,7 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_items = current_customer.cart_items
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 
   def update
