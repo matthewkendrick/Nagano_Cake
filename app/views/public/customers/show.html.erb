@@ -3,39 +3,39 @@
   <h5 class="font-weight-bold m-0">登録情報</h5>
 </div>
 
-  <table class="table table-light shadow mt-3">
-    <thead>
-      <tr>
-        <th class="bg-black">氏名</th>
-        <td class="bg-white"><%= @customer.last_name + @customer.first_name %></td>
-      </tr>
+<table class="table table-light shadow mt-3">
+  <thead>
+    <tr>
+      <th class="bg-black">氏名</th>
+      <td class="bg-white"><%= @customer.last_name + @customer.first_name %></td>
+    </tr>
 
-      <tr>
-        <th class="bg-black">カナ</th>
-        <td class="bg-white"><%= @customer.last_name_kana + @customer.first_name_kana %></td>
-      </tr>
+    <tr>
+      <th class="bg-black">カナ</th>
+      <td class="bg-white"><%= @customer.last_name_kana + @customer.first_name_kana %></td>
+    </tr>
 
-      <tr>
-        <th class="bg-black">郵便番号</th>
-        <td class="bg-white"><%= @customer.postal_code %></td>
-      </tr>
+    <tr>
+      <th class="bg-black">郵便番号</th>
+      <td class="bg-white"><%= @customer.postal_code %></td>
+    </tr>
 
-      <tr>
-        <th class="bg-black">住所</th>
-        <td class="bg-white"><%= @customer.address %></td>
-      </tr>
+    <tr>
+      <th class="bg-black">住所</th>
+      <td class="bg-white"><%= @customer.address %></td>
+    </tr>
 
-      <tr>
-        <th class="bg-black">電話番号</th>
-        <td class="bg-white"><%= @customer.telephone_number %></td>
-      </tr>
-      
-      <tr>
-        <th class="">メールアドレス</th>
-        <td class="bg-white"><%= @customer.email %></td>
-      </tr>
-    </thead>
-  </table>
+    <tr>
+      <th class="bg-black">電話番号</th>
+      <td class="bg-white"><%= @customer.telephone_number %></td>
+    </tr>
+    
+    <tr>
+      <th class="">メールアドレス</th>
+      <td class="bg-white"><%= @customer.email %></td>
+    </tr>
+  </thead>
+</table>
 
   <div class="text-center"><%= link_to "編集する", edit_customer_path(current_customer.id), class: "btn btn-success mb-3 w-50" %></div>
   <div class="text-center mt-2">

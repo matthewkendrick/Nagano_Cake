@@ -1,7 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
-    @order = current_customer.order.new
-    @delivery = Delivery.new
+    @order = Order.new
   end
 
   def log
@@ -9,26 +8,27 @@ class Public::OrdersController < ApplicationController
 
   def thanks
     @cart_items           = current_customer.cart_items
-    @order                = Order.new(order.params)
+    @order                = Order.new(order_params)
     @order.customer_id    = current_customer.id
     @order.shipping_cost  = 500
-    @order.total_price    = @cart_items.inject(order.shipping_cost) { |sum, item| sum + item.subtotal }
+    @order.total_price    = @cart_items.inject(@order.shipping_cost) { |sum, item| sum + item.subtotal }
    if params[:order][:select_address] == "0"
      @order.zip_code          = current_customer.postal_code
      @order.shipping_address  = current_customer.address
-     @order.shipping_name     = current_customer.first_name + current_customer.last_name
+     @order.shipping_name     = current_customer.full_name
    elsif params[:order][:select_address] == "1"
      address = Address.find(params[:order][:address_id])
      @order.shipping_address  = address.address
      @order.zip_code          = address.postal_code
      @order.shipping_name     = address.name
    end
+    session[:order] = @order
   end
 
   def create
     @order = Order.new(session[:order])
     @order.save
-    current_customer.card_items.each do |cart_item|
+    current_customer.cart_items.each do |cart_item|
       order_detail                  = OrderDetail.new(order_id:@order.id)
       order_detail.item_id          = cart_item.item.id
       order_detail.count            = cart_item.amount

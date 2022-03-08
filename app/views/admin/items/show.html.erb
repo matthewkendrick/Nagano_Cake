@@ -15,7 +15,7 @@
     </div>
 
     <div class="row mt-3">
-      <div class="col"><%= @item.genre %></div>
+      <div class="col" style="color: gray">ジャンル : <%= @item.genre.name %></div>
     </div>
 
     <div class="row mt-3">
@@ -35,8 +35,8 @@
       </div>
     </div>
 
-    <div class="text-center mt-4">
-      <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success w-50" %>
+    <div class="text-center mt-3 mb-5">
+      <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-outline-secondary w-50" %>
     </div>
   </div>
 </div>

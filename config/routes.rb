@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     resources :cart_items,  only:   [:index, :create, :update, :destroy]
     resources :customers,   only:   [:show,  :edit,   :update]
     resources :deliveries,  expect: [:new,   :show]
-    resources :orders,      expect: [:edit,  :update, :destroy] do
+    resources :orders,      expect: [:new,   :edit,   :update, :destroy] do
       collection do
         get   'thanks'
         post  'log'
