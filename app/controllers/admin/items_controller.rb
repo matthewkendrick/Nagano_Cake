@@ -7,7 +7,7 @@ class Admin::ItemsController < ApplicationController
     @genres = Genre.all
     @item   = Item.new
     if @item.save
-      redirect_to admin_item_path(@item.id) 
+      redirect_to admin_items_path(@item.id) 
     else
       @genres = Genre.all
       render :new
@@ -17,7 +17,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.save
-    redirect_to admin_item_path(@item.id)
+    redirect_to admin_items_path(@item.id)
   end
 
   def show

@@ -28,16 +28,27 @@ Rails.application.routes.draw do
     get     "/cart_items"             => "cart_items#index"
     get     "/customers/quit"         => "customers#quit"
     patch   "/customers/sign_out"     => "customers#out", as: "out"
-    delete  "/cart_items" => "cart_items#destroy_all"
+    delete  "/cart_items"             => "cart_items#destroy_all"
+    post    "orders/log"              => "orders#log"
 
+    resources :shipping_addresses,  only: [:index, :edit, :create, :update, :destroy]
     resources :items,       only:   [:index, :show]
-    resources :cart_items,  only:   [:index, :create, :update, :destroy]
-    resources :customers,   only:   [:show,  :edit,   :update]
-    resources :deliveries,  expect: [:new,   :show]
-    resources :orders,      expect: [:new,   :edit,   :update, :destroy] do
+    resources :cart_items,  only:   [:index, :create, :update, :destroy] do
       collection do
-        get   'thanks'
-        post  'log'
+        delete 'destroy_all'
+      end
+    end
+    resources :customers,   only:   [:show, :edit, :update] do
+      collection do
+        get 'quit'
+      end
+      collection do
+        patch 'out'
+      end
+    end
+    resources :orders,      only:   [:show, :new, :index, :create] do
+      collection do
+        get  "thanks"
       end
     end
   end

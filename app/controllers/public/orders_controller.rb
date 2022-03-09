@@ -1,43 +1,49 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
+    @order.customer_id = current_customer.id
   end
 
   def log
+    @order              = Order.new(order_params)
+    @order.customer_id  = current_customer.id
+    @cart_items         = CartItem.all
+    @payment            = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @total              = (@payment + 500).to_s
+
+    if params[:order][:select_address] == "0"
+      @order.zip_code         = current_customer.postal_code
+      @order.shipping_address = current_customer.address
+      @order.shipping_name    = current_customer.full_name
+    elsif params[:order][:select_address] == "1"
+      address = Addresses.find(params[:order][:address_id])
+      @order.zip_code         = address.postal_code
+      @order.shipping_address = address.address
+      @order.shipping_name    = address.name
+    end
   end
 
   def thanks
-    @cart_items           = current_customer.cart_items
-    @order                = Order.new(order_params)
-    @order.customer_id    = current_customer.id
-    @order.shipping_cost  = 500
-    @order.total_price    = @cart_items.inject(@order.shipping_cost) { |sum, item| sum + item.subtotal }
-   if params[:order][:select_address] == "0"
-     @order.zip_code          = current_customer.postal_code
-     @order.shipping_address  = current_customer.address
-     @order.shipping_name     = current_customer.full_name
-   elsif params[:order][:select_address] == "1"
-     address = Address.find(params[:order][:address_id])
-     @order.shipping_address  = address.address
-     @order.zip_code          = address.postal_code
-     @order.shipping_name     = address.name
-   end
-    session[:order] = @order
   end
 
+  # NOTE(以下コメントアウトしている部分によって注文完了画面に飛んだ)
+  # NOTE(確認画面に遷移できていない？)
   def create
-    @order = Order.new(session[:order])
-    @order.save
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    # @order.save
+
     current_customer.cart_items.each do |cart_item|
-      order_detail                  = OrderDetail.new(order_id:@order.id)
-      order_detail.item_id          = cart_item.item.id
-      order_detail.count            = cart_item.amount
-      order_detail.with_tax_price   = (cart_item.item.price * 1.1).floor
-      order_detail.save
+      @order_detail                  = OrderDetail.new
+      @order_detail.order_id         = @order.id
+      @order_detail.item_id          = cart_item.item_id
+      # @order_detail.order_price      = cart_item.item.with_tax_price
+      @order_detail.amount           = cart_item.amount
+      @order_detail.making_status    = 0
+      @order_detail.save
     end
-    session[:order] = nil
     current_customer.cart_items.destroy_all
-    redirect_to comlplete_path 
+    redirect_to thanks_orders_path
   end
 
   def index
@@ -45,16 +51,29 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @orders        = Order.find(params[:id])
+    @shipping_cost = 500
   end
 
   private
   
   def order_params
-    params.require(:order).permit(:payment_method, :shipping_address, :zip_code, :shipping_name, :shipping_cost, :total_price, :customer_id)
+    params.require(:order)
+    .permit(:customer_id,
+            :zip_code,
+            :shipping_address,
+            :shipping_name,
+            :shipping_cost,
+            :payment_method,
+            :payment)
   end
 
-  def delivery_params
-    params.permit(:name, :address, :postal_code)
+  def order_detail_params
+    params.require(:order_detail)
+    .permit(:order_id,
+            :item_id,
+            :order_price,
+            :amount,
+            :making_status)
   end
 end

@@ -14,7 +14,7 @@
           <td>
             〒 <%= @order.zip_code %><br>
             <%= @order.shipping_address %><br>
-            <%= @order.shippin_name %>
+            <%= @order.shipping_name %>
           </td>
         </tr>
         <tr>
@@ -38,7 +38,7 @@
         </tr>
         <tr>
           <th class="text-white bg-black">配送料</th>
-          <td><%= @order.postage %></td>
+          <td><%= @order.shipping_cost %></td>
         </tr>
         <tr>
           <th class="text-white bg-black">ご請求額</th>

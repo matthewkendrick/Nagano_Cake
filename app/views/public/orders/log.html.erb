@@ -34,11 +34,11 @@
       </tr>
       <tr>
         <th class="text-white bg-black">商品合計</th>
-        <td><%= @order.payment %>円</td>
+        <td><%= @payment %>円</td>
       </tr>
       <tr>
         <th class="text-white bg-black">請求金額</th>
-        <td><%= @order.total_price %>円</td>
+        <td><%= @total %>円</td>
       </tr>
     </tbody>
   </table>
@@ -53,15 +53,17 @@
   <p class="col-3">お届け先</p>
   <p>
     〒<%= @order.zip_code %> <%= @order.shipping_address %> <br>
-    <%= order.shipping_name %>
+    <%= @order.shipping_name %>
   </p>
 </div>
-<div class="text-center">
-  <%= form_with model: Order.new do |f| %>
-    <%= f.hidden_field :shipping_name, value: @order.shipping_name %>
+<div class="order-confirm">
+  <%= form_with model: @order, url: {action: "create"}, local: true do |f| %>
+    <%= f.hidden_field :customre_id, value: @order.customer_id %>
     <%= f.hidden_field :zip_code, value: @order.zip_code %>
     <%= f.hidden_field :shipping_address, value: @order.shipping_address %>
+    <%= f.hidden_field :shipping_name, value: @order.shipping_name %>
     <%= f.hidden_field :payment_method, value: @order.payment_method %>
+    <%= f.hidden_field :payment, value:  => @payment %>
     <%= f.submit "注文を確定する", class: "btn btn-success btn-md" %>
   <% end %>
 </div>
