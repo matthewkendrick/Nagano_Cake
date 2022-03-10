@@ -3,74 +3,71 @@
 
   <div class="col-md-6 pt-3">
     <h5>注文情報</h5>
-    <table class="table table-light table-borderless border">
+    <table class="table table-light table-borderless border ml-4">
       <tbody>
         <tr>
-          <th class="text-white bg-black">注文日</th>
-          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          <th class="bg-black">注文日</th>
+          <td><%= @orders.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
-          <th class="text-white bg-black align-middle">配送先</th>
+          <th class="bg-black align-middle">配送先</th>
           <td>
-            〒 <%= @order.zip_code %><br>
-            <%= @order.shipping_address %><br>
-            <%= @order.shipping_name %>
+            <%= @orders.shipping_address %><br>
+            <%= @orders.shipping_name %>
           </td>
         </tr>
         <tr>
-          <th class="text-white bg-black">支払い方法</th>
-          <td><%= @order.payment_method_i18n %></td>
+          <th class="bg-black">支払い方法</th>
+          <td><%= @orders.payment_method_i18n %></td>
         </tr>
         <tr>
-          <th class="text-white bg-black">ステータス</th>
-          <td><%= @order.status_i18n %></td>
+          <th class="bg-black">ステータス</th>
+          <td><%= @orders.status_i18n %></td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 mt-5">
     <h5>請求情報</h5>
-    <table class="table table-light table-borderless border">
+    <table class="table table-light table-borderless border ml-4">
       <thead>
         <tr>
-          <th class="text-white bg-black">合計金額</th>
-          <td><%= @order.payment %></td>
+          <th class="bg-black">合計金額</th>
+          <td><%= @orders.amount_billed %></td>
         </tr>
         <tr>
-          <th class="text-white bg-black">配送料</th>
-          <td><%= @order.shipping_cost %></td>
+          <th class="bg-black">配送料</th>
+          <td><%= @orders.shipping_cost %></td>
         </tr>
         <tr>
-          <th class="text-white bg-black">ご請求額</th>
-          <td><%= @order.total_price %></td>
+          <th class="bg-black">ご請求額</th>
+          <td><%= (@orders.amount_billed + @orders.shipping_cost).to_s %></td>
         </tr>
       </thead>
     </table>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-md-8">
+  <div class="col-md-8 mt-5 mb-5">
     <h5>注文内容</h5>
-    <table class="table table-light table-borderless border">
+    <table class="table table-light ml-4">
       <thead>
-        <tr class="text-white bg-black">
-          <th>商品</th>
+        <tr class="bg-black">
+          <th>商品名</th>
           <th>単価(税込み)</th>
           <th>個数</th>
           <th>小計</th>
         </tr>
       </thead>
       <tbody>
-        <% @order.order_details.each do |order_detail| %>
+        <% @orders.order_details.each do |order_detail| %>
           <tr>
-            <td><%= @order_detail.item.name %></td>
-            <td><%= @order_detail.item.with_tax_price %>円</td>
-            <td><%= @order_detail.amount %></td>
-            <td><%= @order_detail.subtotal %></td>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.item.with_tax_price %>円</td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.subtotal %></td>
           </tr>
         <% end %>
       </tbody> 
     </table>
   </div>
 </div>
+

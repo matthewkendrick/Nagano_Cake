@@ -1,4 +1,4 @@
-<h2 class="mb-4">注文履歴詳細</h2>
+<h2>注文履歴詳細</h2>
 
 <table class="table table-light">
   <thead>
@@ -22,6 +22,7 @@
       <th>注文ステータス</th>
       <%= form_with model: @order, url: admin_order_path(@order.id), local:true do |f| %>
         <td>
+        <%# WARNING(ステータスが更新されない) %>
           <%= f.select :status, [['入金待ち', 0], ['入金確認', 1], ['製作中', 2], ['発送済み', 3]] %>
           <%= f.submit "更新", class: "btn btn-success btn-sm" %>
         </td>
@@ -56,15 +57,11 @@
               <% end %>
             </tr>
           <% end %>
-        </<tbody>>
+        </<tbody>
       </table>
 
       <table class="col-5 ml-auto mb-5">
         <thead>
-          <tr>
-            <th></th>
-            <td></td>
-          </tr>
           <tr>
             <th>商品合計</th>
             <td class="text-right"><%= @order.amount_billed %> 円</td>
@@ -81,3 +78,4 @@
       </table>
     </div>
   </div>
+</table>

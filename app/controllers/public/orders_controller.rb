@@ -29,7 +29,6 @@ class Public::OrdersController < ApplicationController
   end
 
   # TODO(WBSの更新)
-  # NOTE(確認画面に遷移できるようにはなったが、以下のcreateを通っていないためパラメータが取得できていない)
 
   def create
     @order = Order.new(order_params)

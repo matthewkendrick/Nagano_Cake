@@ -12,8 +12,8 @@ class Admin::OrdersController < ApplicationController
     if @order.update(order_params)
       flash[:notice] = "注文ステータスを更新しました"
     end
-    order.save
-    redirect_to admin_order_path(order.id)
+    @order.save
+    redirect_to admin_order_path(@order.id)
   end
 
   private

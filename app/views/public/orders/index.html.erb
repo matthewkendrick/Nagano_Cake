@@ -10,6 +10,7 @@
         <th class="table-active">購入金額</th>
         <th class="table-active">ステータス</th>
         <th class="table-active">注文詳細</th>
+        <th class="table-active"></th>
       </tr>
     </thead>
     <tbody>
@@ -26,6 +27,7 @@
             <% end %>
           </td>
           <td class="align-middle"><%= order.amount_billed %>円</td>
+          <td></td>
           <td class="align-middle"><%= link_to "表示する", order_path(order.id), class: "btn btn-outline-primary btn-sm" %></td>
           <td></td>
         </tr> 
