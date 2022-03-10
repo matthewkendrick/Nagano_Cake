@@ -11,7 +11,7 @@ ja:
         preparing_shipment:   "発送準備中"
         shipped:              "発送済み"
     order_detail:
-      making_status:
+      production_status:
         cannot_start:         "着手不可"
         waiting_for_make:     "製作待ち"
         making:               "製作中"

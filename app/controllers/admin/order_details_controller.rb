@@ -4,12 +4,13 @@ class Admin::OrderDetailsController < ApplicationController
     if @order_detail.update(order_detail_params)
       flash[:notice] = "製作ステータスを更新しました"
     end
-    redirect_to admin_order_path(order_detail_order.id)
+    @order_detail.save
+    redirect_to admin_order_path(@order_detail.id)
   end
 
   private
   
   def order_detail_params
-    params.require(:order_detail).permit(:making_status)
+    params.require(:order_detail).permit(:production_status)
   end
 end

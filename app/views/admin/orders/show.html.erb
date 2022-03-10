@@ -23,7 +23,7 @@
       <%= form_with model: @order, url: admin_order_path(@order.id), local:true do |f| %>
         <td>
         <%# WARNING(ステータスが更新されない) %>
-          <%= f.select :status, [['入金待ち', 0], ['入金確認', 1], ['製作中', 2], ['発送済み', 3]] %>
+          <%= f.select :status, Order.statuses_i18n.invert %>
           <%= f.submit "更新", class: "btn btn-success btn-sm" %>
         </td>
       <% end %>
@@ -49,9 +49,9 @@
               <td><%= order_detail.item.with_tax_price %> 円</td>
               <td><%= order_detail.amount %></td>
               <td><%= order_detail.subtotal %> 円</td>
-              <%= form_with model: @order_detail, url: admin_order_detail_path do |f| %>
+              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), local: true do |f| %>
                 <td>
-                  <%= f.select :making_status, [['製作不可', 0], ['製作待ち', 1], ['製作中', 2], ['製作完了', 3]] %>
+                  <%= f.select :production_status, OrderDetail.production_statuses.keys.map{ |k| [I18n.t("enums.order_detail.production_status.#{k}"), k]} %>
                   <%= f.submit "更新", class: "btn btn-success btn-sm" %>
                 </td>
               <% end %>
