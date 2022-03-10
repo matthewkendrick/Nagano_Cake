@@ -1,4 +1,4 @@
-class Address < ApplicationRecord
+class ShippingAddress < ApplicationRecord
   belongs_to :customer
 
   def full_address
