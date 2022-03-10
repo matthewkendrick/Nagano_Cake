@@ -2,18 +2,19 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @order.customer_id = current_customer.id
+    @cart_items = CartItem.all
   end
 
   def log
     @order              = Order.new(order_params)
     @order.customer_id  = current_customer.id
     @cart_items         = CartItem.all
-    @payment            = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-    @total              = (@payment + 500).to_s
+    @amount_billed      = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @total              = (@amount_billed + 500).to_s
 
     if params[:order][:select_address] == "0"
       @order.zip_code         = current_customer.postal_code
-      @order.shipping_address = current_customer.address
+      @order.shipping_address = current_customer.full_address
       @order.shipping_name    = current_customer.full_name
     elsif params[:order][:select_address] == "1"
       address = Addresses.find(params[:order][:address_id])
@@ -26,20 +27,23 @@ class Public::OrdersController < ApplicationController
   def thanks
   end
 
-  # NOTE(以下コメントアウトしている部分によって注文完了画面に飛んだ)
-  # NOTE(確認画面に遷移できていない？)
+  # TODO(WBSの更新)
+  # NOTE(確認画面に遷移できるようにはなったが、以下のcreateを通っていないためパラメータが取得できていない)
+
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    # @order.save
+    @order.shipping_cost = 500
+    @order.amount_billed = 500
+    @order.save
 
     current_customer.cart_items.each do |cart_item|
-      @order_detail                  = OrderDetail.new
-      @order_detail.order_id         = @order.id
-      @order_detail.item_id          = cart_item.item_id
-      # @order_detail.order_price      = cart_item.item.with_tax_price
-      @order_detail.amount           = cart_item.amount
-      @order_detail.making_status    = 0
+      @order_detail                    = OrderDetail.new
+      @order_detail.order_id           = @order.id
+      @order_detail.item_id            = cart_item.item_id
+      @order_detail.purchase_price     = cart_item.item.with_tax_price
+      @order_detail.amount             = cart_item.amount
+      @order_detail.production_status  = 0
       @order_detail.save
     end
     current_customer.cart_items.destroy_all
@@ -63,17 +67,16 @@ class Public::OrdersController < ApplicationController
             :zip_code,
             :shipping_address,
             :shipping_name,
-            :shipping_cost,
             :payment_method,
-            :payment)
+            :amount_billed)
   end
 
   def order_detail_params
     params.require(:order_detail)
     .permit(:order_id,
             :item_id,
-            :order_price,
+            :purchase_price,
             :amount,
-            :making_status)
+            :production_status)
   end
 end

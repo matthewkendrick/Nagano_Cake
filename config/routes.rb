@@ -29,9 +29,9 @@ Rails.application.routes.draw do
     get     "/customers/quit"         => "customers#quit"
     patch   "/customers/sign_out"     => "customers#out", as: "out"
     delete  "/cart_items"             => "cart_items#destroy_all"
-    post    "orders/log"              => "orders#log"
+    post    "/orders/log"             => "orders#log"
 
-    resources :shipping_addresses,  only: [:index, :edit, :create, :update, :destroy]
+    resources :addresses,   only:   [:index, :edit, :create, :update, :destroy]
     resources :items,       only:   [:index, :show]
     resources :cart_items,  only:   [:index, :create, :update, :destroy] do
       collection do

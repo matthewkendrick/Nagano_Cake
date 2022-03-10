@@ -1,8 +1,7 @@
-<div class="form-row">
+<div class="row">
   <h2 class="col">会員情報編集</h2>
-  <div class="col-3">
-  WARNING(退会ボタンを押しても退会できない)
-      <%= link_to "退会する", customers_quit_path, class: "btn btn-sm btn-danger" %>
+  <div class="col-3 mt-3">
+    <%= button_to "退会する", customers_quit_path, method: :get, class: "btn btn-sm btn-outline-danger" %>
   </div>
 </div>
 
@@ -40,7 +39,7 @@
   </div>
 
   <div class="form-row text-center pt-4">
-    <div class="col">
+    <div class="col mb-5">
       <%= f.submit "変更を保存", class: "btn btn-success w-50" %>
     </div>
   </div>
