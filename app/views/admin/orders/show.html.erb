@@ -1,14 +1,14 @@
 <h2 class="mb-4">注文履歴詳細</h2>
 
-<table class="table table-borderless">
+<table class="table table-light">
   <thead>
     <tr>
       <th>購入者</th>
-      <td><%= link_to @customer.full_name, admin_customer_path(@customer) %></td>
-    r>
+      <td><%= @order.customer.full_name %></td>
+    </tr>
     <tr>
       <th>注文日</th>
-      <td><%= @order.created_at %></td>
+      <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
     </tr>
     <tr>
       <th>配送先</th>
@@ -16,14 +16,16 @@
     </tr>
     <tr>
       <th>支払い方法</th>
-      <td><%= @order.payment_method %></td>
+      <td><%= @order.payment_method_i18n %></td>
     </tr>
     <tr>
       <th>注文ステータス</th>
-        <%= form_with model: @order, url: admin_order_path(@order.id), local:true do |f| %>
-          <%= f.collection_select :status, {selected: @order.status} %></td>
-          <%= f.submit "更新", class: "btn btn-seccess ml-3" %>
-        <% end %>
+      <%= form_with model: @order, url: admin_order_path(@order.id), local:true do |f| %>
+        <td>
+          <%= f.select :status, [['入金待ち', 0], ['入金確認', 1], ['製作中', 2], ['発送済み', 3]] %>
+          <%= f.submit "更新", class: "btn btn-success btn-sm" %>
+        </td>
+      <% end %>
     </tr>
   </thead>
 
@@ -39,31 +41,43 @@
             <th>製作ステータス</th>
           </tr>
         </thead>
+        <tbody>
+          <% @order.order_details.each do |order_detail| %>
+            <tr>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.item.with_tax_price %> 円</td>
+              <td><%= order_detail.amount %></td>
+              <td><%= order_detail.subtotal %> 円</td>
+              <%= form_with model: @order_detail, url: admin_order_detail_path do |f| %>
+                <td>
+                  <%= f.select :making_status, [['製作不可', 0], ['製作待ち', 1], ['製作中', 2], ['製作完了', 3]] %>
+                  <%= f.submit "更新", class: "btn btn-success btn-sm" %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </<tbody>>
+      </table>
+
+      <table class="col-5 ml-auto mb-5">
+        <thead>
+          <tr>
+            <th></th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>商品合計</th>
+            <td class="text-right"><%= @order.amount_billed %> 円</td>
+          </tr>
+          <tr>
+            <th>送料</th>
+            <td class="text-right"><%= @order.shipping_cost %> 円</td>
+          </tr>
+          <tr>
+            <th>請求金額合計</th>
+            <td class="text-right"><%= ( @order.amount_billed + 500 ).to_s %> 円</td>
+          </tr>
+        </thead>
       </table>
     </div>
   </div>
-
-  <div class="col-md-3 d-flex align-item-end">
-    <table class="table table-borderless">
-      <thead>
-        <tr>
-          <td>商品合計</td>
-          <td><%= @order_items_total_price %></td>
-        </tr>
-        <tr>
-          <td>送料</td>
-          <td><%= @order.shipping_cost %></td>
-        </tr>
-        <tr>
-          <td>請求金額合計</td>
-          <td><%= @order_items_total_price + @order.shipping_cost %></td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</table>

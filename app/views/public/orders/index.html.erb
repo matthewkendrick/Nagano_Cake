@@ -4,12 +4,12 @@
   <table class="table table-light table-striped">
     <thead>
       <tr>
-        <th class="table-active" width="200">注文日</th>
-        <th class="table-active" width="300">配送先</th>
-        <th class="table-active" width="300">注文商品</th>
-        <th class="table-active" width="200">購入金額</th>
-        <th class="table-active" width="200">ステータス</th>
-        <th class="table-active" width="200">注文詳細</th>
+        <th class="table-active">注文日</th>
+        <th class="table-active">配送先</th>
+        <th class="table-active">注文商品</th>
+        <th class="table-active">購入金額</th>
+        <th class="table-active">ステータス</th>
+        <th class="table-active">注文詳細</th>
       </tr>
     </thead>
     <tbody>
@@ -17,17 +17,17 @@
         <tr>
           <td class="align-middle"><%= order.created_at.strftime('%Y/%m/%d') %></td>
           <td class="align-middle">
-            〒 <%= order.zip_code %><br>
             <%= order.shipping_address %><br>
-            <%= shipping_name %>
+            <%= order.shipping_name %>
           </td>
           <td class="align-middle">
             <% order.order_details.each do |order_detail| %>
               <%= order_detail.item.name %><br>
             <% end %>
           </td>
-          <td class="align-middle"><%= order.total_price %>円</td>
-          <td class="align-middle"><%= link_to "表示する", order_path(order.id), class: "btn btn-primary" %></td>
+          <td class="align-middle"><%= order.amount_billed %>円</td>
+          <td class="align-middle"><%= link_to "表示する", order_path(order.id), class: "btn btn-outline-primary btn-sm" %></td>
+          <td></td>
         </tr> 
       <% end %>
     </tbody>

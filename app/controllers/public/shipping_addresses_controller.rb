@@ -1,18 +1,18 @@
 class Public::ShippingAddressesController < ApplicationController
   def index
-    @shipping_addresses  = current_customer.addresses
-    @shipping_address    = Address.new
+    @shipping_addresses  = ShippingAddress.where(customer_id: current_customer.id)
+    @shipping_address    = ShippingAddress.new
   end
 
   def create
-    @shipping_address             = Address.new(address_params)
+    @shipping_address             = ShippingAddress.new(shipping_address_params)
     @shipping_address.customer_id = current_customer.id
     @shipping_address.save
     redirect_to shipping_addresses_path
   end
 
   def edit
-    @shipping_address  = Address.find(params[:id])
+    @shipping_address  = ShippingAddress.find(params[:id])
   end
 
   def update

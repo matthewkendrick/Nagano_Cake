@@ -5,18 +5,20 @@
     <thead>
       <tr>
         <th>商品名</th>
-        <th>単価(税込み)</th>
-        <th>数量</th>
-        <th>小計</th>
+        <th></th>
+        <th class="text-center">単価(税込み)</th>
+        <th class="text-center">数量</th>
+        <th class="text-center">小計</th>
       </tr>
     </thead>
     <tbody>
       <% @cart_items.each do |cart_item| %>
         <tr>
           <td class="align-middle"><%= attachment_image_tag cart_item.item, :image, :fill, 80, 60, class: "rounded-lg" %></td>
-          <td class="align-middle"><%= cart_item.item.with_tax_price %>円</td>
-          <td class="align-middle"><%= cart_item.amount %></td>
-          <td class="align-middle"><%= cart_item.subtotal %>円</td>
+          <td class="align-middle"><%= cart_item.item.name %></td>
+          <td class="align-middle text-center"><%= cart_item.item.with_tax_price %>円</td>
+          <td class="align-middle text-center"><%= cart_item.amount %></td>
+          <td class="align-middle text-center"><%= cart_item.subtotal %>円</td>
         </tr> 
       <% end %>
     </tbody>
@@ -28,15 +30,15 @@
     <tbody>
       <tr>
         <th class="bg-black">送料</th>
-        <td><%= @order.shipping_cost %> 円</td>
+        <td class="text-right"><%= @shipping_cost %> 円</td>
       </tr>
       <tr>
         <th class="bg-black">商品合計</th>
-        <td><%= @payment %> 円</td>
+        <td class="text-right"><%= @amount_billed %> 円</td>
       </tr>
       <tr>
         <th class="bg-black">請求金額</th>
-        <td><%= @total %> 円</td>
+        <td class="text-right"><%= @total %> 円</td>
       </tr>
     </tbody>
   </table>
@@ -47,10 +49,10 @@
   <p class="ml-3"><%= @order.payment_method_i18n %></p>
 </div>
 
-<div class="row">
+<div class="row mt-3">
   <p class="col-3">お届け先</p>
   <p class="ml-3">
-    〒<%= @order.zip_code %> <%= @order.shipping_address %> <br>
+    <%= @order.shipping_address %> <br>
     <%= @order.shipping_name %>
   </p>
 </div>
@@ -61,7 +63,7 @@
     <%= f.hidden_field :shipping_address, value: @order.shipping_address %>
     <%= f.hidden_field :shipping_name, value: @order.shipping_name %>
     <%= f.hidden_field :payment_method, value: @order.payment_method %>
-    <%= f.hidden_field :payment, value: @payment %>
+    <%= f.hidden_field :amount_billed, value: @amount_billed %>
     <div class="text-center mt-5 mb-5">
       <%= f.submit "注文を確定する", class: "btn btn-success w-50" %>
     </div>

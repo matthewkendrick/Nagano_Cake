@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     delete  "/cart_items"             => "cart_items#destroy_all"
     post    "/orders/log"             => "orders#log"
 
-    resources :addresses,   only:   [:index, :edit, :create, :update, :destroy]
+    resources :shipping_addresses,   only:   [:index, :edit, :create, :update, :destroy]
     resources :items,       only:   [:index, :show]
     resources :cart_items,  only:   [:index, :create, :update, :destroy] do
       collection do
@@ -46,9 +46,9 @@ Rails.application.routes.draw do
         patch 'out'
       end
     end
-    resources :orders,      only:   [:show, :new, :index, :create] do
+    resources :orders,      only:   [:new, :create, :index, :show] do
       collection do
-        get  "thanks"
+        get  'thanks'
       end
     end
   end

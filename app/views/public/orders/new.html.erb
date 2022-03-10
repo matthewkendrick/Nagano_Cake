@@ -3,7 +3,7 @@
 </div>
 
 <div class="container mt-3">
-  <%= form_with model: @order, url: orders_path, method: :post, local:true do |f| %>
+  <%= form_with model: @order, url: {action: "log"}, local:true do |f| %>
     <h5>支払い方法</h5>
     <div class="container ml-3">
       <div class="col">
@@ -30,7 +30,7 @@
         <%= f.radio_button :select_address, 1 %>
         <%= f.label "登録済みの住所から選択" %> <br>
         <div class="ml-4">
-          <%= f.select :shipping_address_id, options_from_collection_for_select(current_customer.addresses.all, :id, :full_address), class: "form-select" %>
+          <%= f.select :shipping_address_id, options_from_collection_for_select(ShippingAddress.all, :id, :full_address), class: "form-select" %>
         </div>
       </div>
 

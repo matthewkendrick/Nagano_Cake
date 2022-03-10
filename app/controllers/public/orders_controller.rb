@@ -10,6 +10,7 @@ class Public::OrdersController < ApplicationController
     @order.customer_id  = current_customer.id
     @cart_items         = CartItem.all
     @amount_billed      = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @shipping_cost      = 500
     @total              = (@amount_billed + 500).to_s
 
     if params[:order][:select_address] == "0"
@@ -34,7 +35,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.shipping_cost = 500
-    @order.amount_billed = 500
     @order.save
 
     current_customer.cart_items.each do |cart_item|
