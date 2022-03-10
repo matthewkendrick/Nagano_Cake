@@ -14,10 +14,13 @@ class Public::CustomersController < ApplicationController
   end
 
   def quit
+    @customer = current_customer
   end
 
   def out
-    current_customer.toggle!(:is_deleted)
+    @customer = Customer.find(current_customer.id)
+    @customer.update(is_active: false)
+    # current_customer.toggle!(:is_deleted)
     reset_session
     redirect_to root_path 
   end

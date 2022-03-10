@@ -26,7 +26,6 @@ Rails.application.routes.draw do
     get     "customers/information"   => "customers#edit"
     get     "/about"                  => "homes#about"
     get     "/cart_items"             => "cart_items#index"
-    get     "/customers/quit"         => "customers#quit"
     patch   "/customers/sign_out"     => "customers#out", as: "out"
     delete  "/cart_items"             => "cart_items#destroy_all"
     post    "/orders/log"             => "orders#log"

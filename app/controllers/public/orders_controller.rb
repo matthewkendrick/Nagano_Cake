@@ -28,8 +28,6 @@ class Public::OrdersController < ApplicationController
   def thanks
   end
 
-  # TODO(WBSの更新)
-
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
