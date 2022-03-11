@@ -18,8 +18,8 @@ class Public::CustomersController < ApplicationController
   end
 
   def out
-    @customer = Customer.find(current_customer.id)
-    @customer.update(is_active: false)
+    @customer = current_customer
+    @customer.toggle!(:is_deleted)
     # current_customer.toggle!(:is_deleted)
     reset_session
     redirect_to root_path 
@@ -28,6 +28,6 @@ class Public::CustomersController < ApplicationController
   private
   
   def customer_params
-    params.require(:customer).permit(:first_name, :first_name_kana, :last_name, :last_name_kana, :email, :postal_code, :address, :telephone_number)
+    params.require(:customer).permit(:first_name, :first_name_kana, :last_name, :last_name_kana, :email, :postal_code, :address, :telephone_number, :is_deleted)
   end
 end
