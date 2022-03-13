@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, if: :devise_controller?
+  before_action :configure_sign_up_params, only: [:new, :create]
   # before_action :configure_account_update_params, only: [:update]
 
   def new
@@ -46,15 +46,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name,
-                                                       :first_name_kana,
-                                                       :last_name,
-                                                       :last_name_kana,
-                                                       :postal_code,
-                                                       :address,
-                                                       :email,
-                                                       :telephone_number,
-                                                       ])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :first_name_kana, :last_name, :last_name_kana, :postal_code, :address, :email, :telephone_number])
   end
 
   # If you have extra params to permit, append them to the sanitizer.

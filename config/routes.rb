@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
     resources :items,         only:   [:index, :show, :create, :update, :new, :edit]
     resources :genres,        only:   [:index, :edit, :create, :update]
-    resources :customers,     except: [:index, :show, :edit,   :update]
+    resources :customers,     only:   [:index, :show, :edit,   :update]
     resources :orders,        only:   [:index, :show, :update]
     resources :order_details, only:   [:update]
   end
@@ -26,12 +26,13 @@ Rails.application.routes.draw do
     get     "customers/information"   => "customers#edit"
     get     "/about"                  => "homes#about"
     get     "/cart_items"             => "cart_items#index"
-    patch   "/customers/sign_out"     => "customers#out", as: "out"
+    get     "/customers/quit"         => "customers#quit"
+    patch   "/customers/out"          => "customers#out", as: "out"
     delete  "/cart_items"             => "cart_items#destroy_all"
     post    "/orders/log"             => "orders#log"
 
     resources :shipping_addresses,   only:   [:index, :edit, :create, :update, :destroy]
-    resources :customers,   except: [:new,   :create]
+    resources :customers,   only:   [:index, :show, :edit, :update]
     resources :items,       only:   [:index, :show]
     resources :cart_items,  only:   [:index, :create, :update, :destroy] do
       collection do
