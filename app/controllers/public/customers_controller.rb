@@ -22,10 +22,6 @@ class Public::CustomersController < ApplicationController
     customer.toggle!(:is_deleted)
     reset_session
     redirect_to root_path 
-    # if customer.update(is_deleted: true)
-    #   reset_session
-    #   redirect_to root_path 
-    # end
   end
 
   private

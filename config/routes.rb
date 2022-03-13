@@ -32,7 +32,6 @@ Rails.application.routes.draw do
     post    "/orders/log"             => "orders#log"
 
     resources :shipping_addresses,   only:   [:index, :edit, :create, :update, :destroy]
-    resources :customers,   only:   [:index, :show, :edit, :update]
     resources :items,       only:   [:index, :show]
     resources :cart_items,  only:   [:index, :create, :update, :destroy] do
       collection do
