@@ -20,7 +20,6 @@ class Public::CustomersController < ApplicationController
   def out
     @customer = current_customer
     @customer.toggle!(:is_deleted)
-    # current_customer.toggle!(:is_deleted)
     reset_session
     redirect_to root_path 
   end
