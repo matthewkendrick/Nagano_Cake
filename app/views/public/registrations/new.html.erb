@@ -1,4 +1,13 @@
 <h2>新規会員登録</h2>
+<% if @customer.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <div class="container">
   <%= form_with model: @customer, url: customer_registration_path, local:true do |f| %>
     <div class="container">
